@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Soft Computing Concepts</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style.css') }}"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>Soft Computing</h1>
+                <h2>Tugas 1</h2>
+            </header>
+
+            <main>
+                <div class="content-section">
+                    <!-- Soft Computing Section -->
+                    <div class="collapsible">
+                        <div class="collapsible-header">
+                            Pengertian Soft Computing
+                        </div>
+                        <div class="collapsible-content">
+                            <p>
+                                Soft Computing adalah suatu pendekatan dalam
+                                komputasi yang mengembangkan sistem cerdas yang
+                                mampu menangani ketidakpastian, ketidaktepatan,
+                                dan kebenaran parsial. Berbeda dengan komputasi
+                                konvensional (hard computing) yang memerlukan
+                                model matematika yang presisi dan lengkap, soft
+                                computing lebih toleran terhadap
+                                ketidakpresisian dan ketidakpastian.
+                            </p>
+
+                            <p>Karakteristik utama Soft Computing meliputi:</p>
+                            <ul>
+                                <li>
+                                    Mampu menangani informasi yang tidak pasti
+                                    dan tidak tepat
+                                </li>
+                                <li>
+                                    Memiliki kemampuan pembelajaran dan adaptasi
+                                </li>
+                                <li>
+                                    Menggunakan pendekatan parallel processing
+                                </li>
+                                <li>
+                                    Terinspirasi dari proses biologis dan
+                                    kognitif manusia
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Fuzzy Logic Section -->
+                    <div class="collapsible">
+                        <div class="collapsible-header">
+                            Penjelasan Logika Fuzzy
+                        </div>
+                        <div class="collapsible-content">
+                            <p>
+                                Logika Fuzzy adalah pendekatan untuk komputasi
+                                berdasarkan "derajat kebenaran" daripada logika
+                                boolean biasa (benar/salah). Logika fuzzy meniru
+                                cara pengambilan keputusan manusia dengan
+                                kemampuan untuk menghasilkan solusi yang tepat
+                                dari data yang tidak pasti atau tidak tepat.
+                            </p>
+
+                            <p>Konsep dasar Logika Fuzzy:</p>
+                            <ul>
+                                <li>
+                                    Himpunan Fuzzy: Memungkinkan keanggotaan
+                                    parsial dalam suatu himpunan
+                                </li>
+                                <li>
+                                    Fungsi Keanggotaan: Menentukan derajat
+                                    keanggotaan suatu elemen dalam himpunan
+                                    fuzzy
+                                </li>
+                                <li>
+                                    Variabel Linguistik: Menggunakan kata-kata
+                                    untuk menggambarkan nilai
+                                </li>
+                                <li>
+                                    Aturan Fuzzy: Menggunakan pernyataan IF-THEN
+                                    untuk formulasi kondisi
+                                </li>
+                            </ul>
+
+                            <p>Aplikasi Logika Fuzzy:</p>
+                            <ul>
+                                <li>Sistem kontrol otomatis</li>
+                                <li>Pengambilan keputusan</li>
+                                <li>Pengenalan pola</li>
+                                <li>Sistem pendukung keputusan</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Neural Network Section -->
+                    <div class="collapsible">
+                        <div class="collapsible-header">
+                            Penjelasan Neural Network (NN)
+                        </div>
+                        <div class="collapsible-content">
+                            <p>
+                                Neural Network (Jaringan Saraf Tiruan) adalah
+                                model komputasi yang terinspirasi dari cara
+                                kerja sistem saraf biologis. NN terdiri dari
+                                node-node yang saling terhubung dan dapat
+                                memproses informasi secara parallel, mampu
+                                belajar dari pengalaman, dan beradaptasi
+                                terhadap input baru.
+                            </p>
+
+                            <p>Komponen utama Neural Network:</p>
+                            <ul>
+                                <li>Neuron (Node): Unit pemrosesan dasar</li>
+                                <li>Bobot: Kekuatan koneksi antar neuron</li>
+                                <li>
+                                    Fungsi Aktivasi: Menentukan output neuron
+                                </li>
+                                <li>
+                                    Layer: Lapisan neuron (input, hidden,
+                                    output)
+                                </li>
+                            </ul>
+
+                            <p>Karakteristik Neural Network:</p>
+                            <ul>
+                                <li>Pembelajaran adaptif</li>
+                                <li>Self-organization</li>
+                                <li>Operasi real-time</li>
+                                <li>Toleransi terhadap kesalahan</li>
+                            </ul>
+
+                            <p>Aplikasi Neural Network:</p>
+                            <ul>
+                                <li>Pengenalan pola dan gambar</li>
+                                <li>Prediksi data time series</li>
+                                <li>Klasifikasi data</li>
+                                <li>Optimasi sistem</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    </body>
+</html>
