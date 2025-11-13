@@ -13,17 +13,18 @@
         <div class="container">
             <header>
                 <h1>Soft Computing</h1>
-                
+
                 <!-- Navigation Tabs -->
                 <nav class="tab-navigation">
                     <a href="/" class="tab-link">Tugas 1</a>
                     <a href="/tugas2" class="tab-link active">Tugas 2</a>
+                    <a href="/tugas3" class="tab-link">Tugas 3</a>
                 </nav>
             </header>
 
             <main>
                 <h2>Tugas 2 - Kalkulator Fuzzy Sugeno</h2>
-                
+
                 <div class="content-section">
                     <!-- Penjelasan Section -->
                     <div class="collapsible active">
@@ -32,69 +33,114 @@
                         </div>
                         <div class="collapsible-content active">
                             <p>
-                                Sistem ini menggunakan metode <strong>Fuzzy Sugeno</strong> untuk menghitung
-                                jumlah produksi barang berdasarkan permintaan dan persediaan.
+                                Sistem ini menggunakan metode
+                                <strong>Fuzzy Sugeno</strong> untuk menghitung
+                                jumlah produksi barang berdasarkan permintaan
+                                dan persediaan.
                             </p>
-                            
+
                             <h3>Variabel Fuzzy:</h3>
                             <ul>
-                                <li><strong>Permintaan:</strong> 1000 (minimum) - 5000 (maksimum)</li>
-                                <li><strong>Persediaan:</strong> 100 (minimum) - 600 (maksimum)</li>
-                                <li><strong>Produksi:</strong> 2000 (minimum) - 7000 (maksimum)</li>
+                                <li>
+                                    <strong>Permintaan:</strong> 1000 (minimum)
+                                    - 5000 (maksimum)
+                                </li>
+                                <li>
+                                    <strong>Persediaan:</strong> 100 (minimum) -
+                                    600 (maksimum)
+                                </li>
+                                <li>
+                                    <strong>Produksi:</strong> 2000 (minimum) -
+                                    7000 (maksimum)
+                                </li>
                             </ul>
 
                             <h3>Aturan Fuzzy (Fuzzy Rules):</h3>
                             <ol>
-                                <li>Jika <strong>permintaan TURUN</strong> dan <strong>persediaan BANYAK</strong> maka <span class="rule-output">produksi = permintaan - persediaan</span></li>
-                                <li>Jika <strong>permintaan TURUN</strong> dan <strong>persediaan SEDIKIT</strong> maka <span class="rule-output">produksi = permintaan</span></li>
-                                <li>Jika <strong>permintaan NAIK</strong> dan <strong>persediaan BANYAK</strong> maka <span class="rule-output">produksi = permintaan</span></li>
-                                <li>Jika <strong>permintaan NAIK</strong> dan <strong>persediaan SEDIKIT</strong> maka <span class="rule-output">produksi = 1.25 × permintaan - persediaan</span></li>
+                                <li>
+                                    Jika <strong>permintaan TURUN</strong> dan
+                                    <strong>persediaan BANYAK</strong> maka
+                                    <span class="rule-output"
+                                        >produksi = permintaan -
+                                        persediaan</span
+                                    >
+                                </li>
+                                <li>
+                                    Jika <strong>permintaan TURUN</strong> dan
+                                    <strong>persediaan SEDIKIT</strong> maka
+                                    <span class="rule-output"
+                                        >produksi = permintaan</span
+                                    >
+                                </li>
+                                <li>
+                                    Jika <strong>permintaan NAIK</strong> dan
+                                    <strong>persediaan BANYAK</strong> maka
+                                    <span class="rule-output"
+                                        >produksi = permintaan</span
+                                    >
+                                </li>
+                                <li>
+                                    Jika <strong>permintaan NAIK</strong> dan
+                                    <strong>persediaan SEDIKIT</strong> maka
+                                    <span class="rule-output"
+                                        >produksi = 1.25 × permintaan -
+                                        persediaan</span
+                                    >
+                                </li>
                             </ol>
                         </div>
                     </div>
 
                     <!-- Form Input Section -->
                     <div class="collapsible active">
-                        <div class="collapsible-header">
-                            ⚙️ Input Data
-                        </div>
+                        <div class="collapsible-header">⚙️ Input Data</div>
                         <div class="collapsible-content active">
                             <form id="fuzzyForm">
                                 <div class="form-group">
-                                    <label for="permintaan">Permintaan (1000 - 5000):</label>
-                                    <input 
-                                        type="number" 
-                                        id="permintaan" 
-                                        name="permintaan" 
-                                        min="1000" 
-                                        max="5000" 
-                                        step="1" 
+                                    <label for="permintaan"
+                                        >Permintaan (1000 - 5000):</label
+                                    >
+                                    <input
+                                        type="number"
+                                        id="permintaan"
+                                        name="permintaan"
+                                        min="1000"
+                                        max="5000"
+                                        step="1"
                                         required
                                         placeholder="Masukkan jumlah permintaan"
-                                    >
+                                    />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="persediaan">Persediaan (100 - 600):</label>
-                                    <input 
-                                        type="number" 
-                                        id="persediaan" 
-                                        name="persediaan" 
-                                        min="100" 
-                                        max="600" 
-                                        step="1" 
+                                    <label for="persediaan"
+                                        >Persediaan (100 - 600):</label
+                                    >
+                                    <input
+                                        type="number"
+                                        id="persediaan"
+                                        name="persediaan"
+                                        min="100"
+                                        max="600"
+                                        step="1"
                                         required
                                         placeholder="Masukkan jumlah persediaan"
-                                    >
+                                    />
                                 </div>
 
-                                <button type="submit" class="btn-proses">Hitung Produksi</button>
+                                <button type="submit" class="btn-proses">
+                                    Hitung Produksi
+                                </button>
                             </form>
                         </div>
                     </div>
 
                     <!-- Hasil Section -->
-                    <div class="collapsible" id="hasilSection" style="display: none;">
+                    <div
+                        class="collapsible"
+                        id="hasilSection"
+                        style="display: none"
+                    >
                         <div class="collapsible-header">
                             📊 Hasil Perhitungan
                         </div>

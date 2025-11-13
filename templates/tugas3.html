@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Soft Computing - Tugas 3</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style.css') }}"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>Soft Computing</h1>
+
+                <!-- Navigation Tabs -->
+                <nav class="tab-navigation">
+                    <a href="/" class="tab-link">Tugas 1</a>
+                    <a href="/tugas2" class="tab-link">Tugas 2</a>
+                    <a href="/tugas3" class="tab-link active">Tugas 3</a>
+                </nav>
+            </header>
+
+            <main>
+                <h2>Tugas 3 - Algoritma Genetika (Knapsack Problem)</h2>
+
+                <div class="content-section">
+                    <!-- Penjelasan Section -->
+                    <div class="collapsible active">
+                        <div class="collapsible-header">
+                            📋 Penjelasan Knapsack Problem
+                        </div>
+                        <div class="collapsible-content active">
+                            <p>
+                                <strong>Knapsack Problem</strong> adalah masalah
+                                optimasi kombinatorial di mana tujuannya adalah
+                                memilih item-item yang akan dimasukkan ke dalam
+                                tas (knapsack) dengan kapasitas terbatas untuk
+                                memaksimalkan total nilai, tanpa melebihi
+                                kapasitas berat tas.
+                            </p>
+
+                            <h3>Algoritma Genetika untuk Knapsack:</h3>
+                            <ul>
+                                <li>
+                                    <strong>Kromosom:</strong> Representasi
+                                    biner [0,1,0,1] di mana 1 = item dipilih, 0
+                                    = tidak dipilih
+                                </li>
+                                <li>
+                                    <strong>Fitness:</strong> Total nilai item
+                                    (dengan penalti jika melebihi kapasitas)
+                                </li>
+                                <li>
+                                    <strong>Seleksi:</strong> Roulette Wheel
+                                    Selection
+                                </li>
+                                <li>
+                                    <strong>Crossover:</strong> Single-point
+                                    crossover
+                                </li>
+                                <li>
+                                    <strong>Mutasi:</strong> Bit flip dengan
+                                    probabilitas tertentu
+                                </li>
+                                <li>
+                                    <strong>Elitism:</strong> Individu terbaik
+                                    dipertahankan ke generasi berikutnya
+                                </li>
+                            </ul>
+
+                            <h3>Parameter Algoritma:</h3>
+                            <ul>
+                                <li>
+                                    <strong>Population Size:</strong> Jumlah
+                                    individu dalam setiap generasi (default: 8)
+                                </li>
+                                <li>
+                                    <strong>Generations:</strong> Jumlah iterasi
+                                    evolusi (default: 8)
+                                </li>
+                                <li>
+                                    <strong>Crossover Rate:</strong>
+                                    Probabilitas terjadinya crossover (default:
+                                    0.8)
+                                </li>
+                                <li>
+                                    <strong>Mutation Rate:</strong> Probabilitas
+                                    terjadinya mutasi (default: 0.1)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Form Input Items -->
+                    <div class="collapsible active">
+                        <div class="collapsible-header">📦 Input Data Item</div>
+                        <div class="collapsible-content active">
+                            <div class="form-group">
+                                <label for="capacity"
+                                    >Kapasitas Tas (kg):</label
+                                >
+                                <input
+                                    type="number"
+                                    id="capacity"
+                                    name="capacity"
+                                    value="15"
+                                    min="1"
+                                    step="1"
+                                    required
+                                    placeholder="Masukkan kapasitas tas"
+                                />
+                            </div>
+
+                            <div id="itemsContainer">
+                                <div class="item-input" data-item="0">
+                                    <h4>Item A</h4>
+                                    <div class="item-fields">
+                                        <div class="form-group">
+                                            <label>Nama Item:</label>
+                                            <input
+                                                type="text"
+                                                class="item-name"
+                                                value="A"
+                                                required
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Berat (kg):</label>
+                                            <input
+                                                type="number"
+                                                class="item-weight"
+                                                value="7"
+                                                min="1"
+                                                step="1"
+                                                required
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Nilai ($):</label>
+                                            <input
+                                                type="number"
+                                                class="item-value"
+                                                value="5"
+                                                min="1"
+                                                step="1"
+                                                required
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="item-input" data-item="1">
+                                    <h4>Item B</h4>
+                                    <div class="item-fields">
+                                        <div class="form-group">
+                                            <label>Nama Item:</label>
+                                            <input
+                                                type="text"
+                                                class="item-name"
+                                                value="B"
+                                                required
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Berat (kg):</label>
+                                            <input
+                                                type="number"
+                                                class="item-weight"
+                                                value="2"
+                                                min="1"
+                                                step="1"
+                                                required
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Nilai ($):</label>
+                                            <input
+                                                type="number"
+                                                class="item-value"
+                                                value="4"
+                                                min="1"
+                                                step="1"
+                                                required
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="item-input" data-item="2">
+                                    <h4>Item C</h4>
+                                    <div class="item-fields">
+                                        <div class="form-group">
+                                            <label>Nama Item:</label>
+                                            <input
+                                                type="text"
+                                                class="item-name"
+                                                value="C"
+                                                required
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Berat (kg):</label>
+                                            <input
+                                                type="number"
+                                                class="item-weight"
+                                                value="1"
+                                                min="1"
+                                                step="1"
+                                                required
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Nilai ($):</label>
+                                            <input
+                                                type="number"
+                                                class="item-value"
+                                                value="7"
+                                                min="1"
+                                                step="1"
+                                                required
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="item-input" data-item="3">
+                                    <h4>Item D</h4>
+                                    <div class="item-fields">
+                                        <div class="form-group">
+                                            <label>Nama Item:</label>
+                                            <input
+                                                type="text"
+                                                class="item-name"
+                                                value="D"
+                                                required
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Berat (kg):</label>
+                                            <input
+                                                type="number"
+                                                class="item-weight"
+                                                value="9"
+                                                min="1"
+                                                step="1"
+                                                required
+                                            />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Nilai ($):</label>
+                                            <input
+                                                type="number"
+                                                class="item-value"
+                                                value="2"
+                                                min="1"
+                                                step="1"
+                                                required
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="button-group">
+                                <button
+                                    type="button"
+                                    id="addItem"
+                                    class="btn-secondary"
+                                >
+                                    + Tambah Item
+                                </button>
+                                <button
+                                    type="button"
+                                    id="removeItem"
+                                    class="btn-danger"
+                                >
+                                    - Hapus Item Terakhir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Parameter GA Section -->
+                    <div class="collapsible active">
+                        <div class="collapsible-header">
+                            ⚙️ Parameter Algoritma Genetika
+                        </div>
+                        <div class="collapsible-content active">
+                            <form id="geneticForm">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="pop_size"
+                                            >Population Size:</label
+                                        >
+                                        <input
+                                            type="number"
+                                            id="pop_size"
+                                            name="pop_size"
+                                            value="8"
+                                            min="4"
+                                            max="100"
+                                            step="2"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="generations"
+                                            >Generations:</label
+                                        >
+                                        <input
+                                            type="number"
+                                            id="generations"
+                                            name="generations"
+                                            value="8"
+                                            min="1"
+                                            max="100"
+                                            step="1"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="crossover_rate"
+                                            >Crossover Rate (0-1):</label
+                                        >
+                                        <input
+                                            type="number"
+                                            id="crossover_rate"
+                                            name="crossover_rate"
+                                            value="0.8"
+                                            min="0"
+                                            max="1"
+                                            step="0.1"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="mutation_rate"
+                                            >Mutation Rate (0-1):</label
+                                        >
+                                        <input
+                                            type="number"
+                                            id="mutation_rate"
+                                            name="mutation_rate"
+                                            value="0.1"
+                                            min="0"
+                                            max="1"
+                                            step="0.05"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn-proses">
+                                    Jalankan Algoritma Genetika
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Hasil Section -->
+                    <div
+                        class="collapsible"
+                        id="hasilSection"
+                        style="display: none"
+                    >
+                        <div class="collapsible-header">
+                            📊 Hasil Evolusi Algoritma Genetika
+                        </div>
+                        <div class="collapsible-content active">
+                            <div id="hasilContainer"></div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/genetic.js') }}"></script>
+    </body>
+</html>

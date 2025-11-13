@@ -1,42 +1,42 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const fuzzyForm = document.getElementById('fuzzyForm');
-    
+document.addEventListener("DOMContentLoaded", function () {
+    const fuzzyForm = document.getElementById("fuzzyForm");
+
     if (fuzzyForm) {
-        fuzzyForm.addEventListener('submit', async function(e) {
+        fuzzyForm.addEventListener("submit", async function (e) {
             e.preventDefault();
-            
-            const permintaan = document.getElementById('permintaan').value;
-            const persediaan = document.getElementById('persediaan').value;
-            
+
+            const permintaan = document.getElementById("permintaan").value;
+            const persediaan = document.getElementById("persediaan").value;
+
             try {
-                const response = await fetch('/hitung-fuzzy', {
-                    method: 'POST',
+                const response = await fetch("/hitung-fuzzy", {
+                    method: "POST",
                     headers: {
-                        'Content-Type': 'application/json',
+                        "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
                         permintaan: permintaan,
-                        persediaan: persediaan
-                    })
+                        persediaan: persediaan,
+                    }),
                 });
-                
+
                 const data = await response.json();
-                
+
                 if (data.success) {
                     displayHasil(data);
                 }
             } catch (error) {
-                console.error('Error:', error);
-                alert('Terjadi kesalahan dalam perhitungan');
+                console.error("Error:", error);
+                alert("Terjadi kesalahan dalam perhitungan");
             }
         });
     }
 });
 
 function displayHasil(data) {
-    const hasilSection = document.getElementById('hasilSection');
-    const hasilContainer = document.getElementById('hasilContainer');
-    
+    const hasilSection = document.getElementById("hasilSection");
+    const hasilContainer = document.getElementById("hasilContainer");
+
     let html = `
         <div class="hasil-box">
             <h3>Input Data:</h3>
@@ -54,19 +54,27 @@ function displayHasil(data) {
             <h3>Derajat Keanggotaan:</h3>
             <div class="hasil-item">
                 <span class="hasil-label">Permintaan TURUN:</span>
-                <span class="hasil-value">${data.derajat_keanggotaan.permintaan_turun.toFixed(3)}</span>
+                <span class="hasil-value">${data.derajat_keanggotaan.permintaan_turun.toFixed(
+                    3
+                )}</span>
             </div>
             <div class="hasil-item">
                 <span class="hasil-label">Permintaan NAIK:</span>
-                <span class="hasil-value">${data.derajat_keanggotaan.permintaan_naik.toFixed(3)}</span>
+                <span class="hasil-value">${data.derajat_keanggotaan.permintaan_naik.toFixed(
+                    3
+                )}</span>
             </div>
             <div class="hasil-item">
                 <span class="hasil-label">Persediaan SEDIKIT:</span>
-                <span class="hasil-value">${data.derajat_keanggotaan.persediaan_sedikit.toFixed(3)}</span>
+                <span class="hasil-value">${data.derajat_keanggotaan.persediaan_sedikit.toFixed(
+                    3
+                )}</span>
             </div>
             <div class="hasil-item">
                 <span class="hasil-label">Persediaan BANYAK:</span>
-                <span class="hasil-value">${data.derajat_keanggotaan.persediaan_banyak.toFixed(3)}</span>
+                <span class="hasil-value">${data.derajat_keanggotaan.persediaan_banyak.toFixed(
+                    3
+                )}</span>
             </div>
         </div>
 
@@ -74,7 +82,7 @@ function displayHasil(data) {
             <h3>Evaluasi Rules:</h3>
             <div class="rule-list">
     `;
-    
+
     data.rules.forEach((rule, index) => {
         html += `
             <div class="rule-item">
@@ -83,7 +91,7 @@ function displayHasil(data) {
             </div>
         `;
     });
-    
+
     html += `
             </div>
         </div>
@@ -92,10 +100,27 @@ function displayHasil(data) {
             Jumlah Produksi yang Direkomendasikan: ${data.hasil_produksi}
         </div>
     `;
-    
+
     hasilContainer.innerHTML = html;
-    hasilSection.style.display = 'block';
-    
+    hasilSection.style.display = "block";
+
+    // Expand hasil section if collapsed
+    const hasilCollapsible = hasilSection.querySelector(".collapsible-content");
+    const hasilParent = hasilSection;
+
+    if (hasilCollapsible) {
+        if (!hasilCollapsible.classList.contains("active")) {
+            hasilCollapsible.classList.add("active");
+            hasilParent.classList.add("active");
+        }
+
+        // Update maxHeight after content is added
+        setTimeout(() => {
+            hasilCollapsible.style.maxHeight =
+                hasilCollapsible.scrollHeight + "px";
+        }, 10);
+    }
+
     // Scroll to hasil
-    hasilSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    hasilSection.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
