@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request, jsonify
 import random
+import numpy as np
+import pandas as pd
+import os
 
 app = Flask(__name__)
 
@@ -14,6 +17,10 @@ def tugas2():
 @app.route('/tugas3')
 def tugas3():
     return render_template('tugas3.html')
+
+@app.route('/tugas4')
+def tugas4():
+    return render_template('tugas4.html')
 
 @app.route('/hitung-fuzzy', methods=['POST'])
 def hitung_fuzzy():
@@ -245,6 +252,118 @@ def hitung_genetic():
             'value': v,
             'fitness': fitness(best_chrom)
         }
+    })
+
+@app.route('/hitung-tsp', methods=['POST'])
+def hitung_tsp():
+    data = request.json
+    
+    # Get parameters
+    pop_size = int(data.get('pop_size', 50))
+    generations = int(data.get('generations', 100))
+    tournament_k = int(data.get('tournament_k', 5))
+    pc = float(data.get('crossover_rate', 0.8))
+    pm = float(data.get('mutation_rate', 0.2))
+    elite_size = int(data.get('elite_size', 1))
+    
+    # Load distance matrix from Excel file
+    try:
+        excel_path = os.path.join('assets', '3.b. TSP - AG.xlsx')
+        df = pd.read_excel(excel_path, index_col=0)
+        cities = list(df.index)
+        dist_matrix = df.values.astype(float)
+    except Exception as e:
+        return jsonify({'success': False, 'error': f'Error loading data: {str(e)}'})
+    
+    # Helper functions
+    def route_distance(route):
+        d = sum(dist_matrix[route[i], route[(i+1)%len(route)]] for i in range(len(route)))
+        return d
+    
+    def create_individual(n):
+        ind = list(range(n))
+        random.shuffle(ind)
+        return ind
+    
+    def initial_population(size, n):
+        return [create_individual(n) for _ in range(size)]
+    
+    def tournament_selection(pop):
+        k = random.sample(pop, tournament_k)
+        return min(k, key=lambda ind: route_distance(ind))
+    
+    def ordered_crossover(p1, p2):
+        a, b = sorted(random.sample(range(len(p1)), 2))
+        child = [-1]*len(p1)
+        child[a:b+1] = p1[a:b+1]
+        
+        p2_idx = 0
+        for i in range(len(p1)):
+            if child[i] == -1:
+                while p2[p2_idx] in child:
+                    p2_idx += 1
+                child[i] = p2[p2_idx]
+        
+        return child
+    
+    def swap_mutation(ind):
+        a, b = random.sample(range(len(ind)), 2)
+        ind[a], ind[b] = ind[b], ind[a]
+    
+    # Main GA Loop
+    pop = initial_population(pop_size, len(cities))
+    best = min(pop, key=lambda ind: route_distance(ind))
+    best_dist = route_distance(best)
+    
+    history = []
+    generation_data = []
+    
+    for g in range(generations):
+        new_pop = []
+        
+        pop = sorted(pop, key=lambda ind: route_distance(ind))
+        
+        if route_distance(pop[0]) < best_dist:
+            best = pop[0]
+            best_dist = route_distance(best)
+        
+        new_pop.extend(pop[:elite_size])
+        
+        while len(new_pop) < pop_size:
+            p1 = tournament_selection(pop)
+            p2 = tournament_selection(pop)
+            
+            child = ordered_crossover(p1, p2) if random.random() < pc else p1[:]
+            
+            if random.random() < pm:
+                swap_mutation(child)
+            
+            new_pop.append(child)
+        
+        pop = new_pop
+        history.append(best_dist)
+        
+        # Store every 10th generation or first/last
+        if g % 10 == 0 or g == generations - 1:
+            generation_data.append({
+                'generation': g,
+                'best_distance': round(best_dist, 2),
+                'best_route': [cities[i] for i in best]
+            })
+    
+    # Final result
+    best_route = [cities[i] for i in best]
+    
+    return jsonify({
+        'success': True,
+        'cities': cities,
+        'generations': generation_data,
+        'final_result': {
+            'route': best_route,
+            'distance': round(best_dist, 2),
+            'full_route': best_route + [best_route[0]]
+        },
+        'history': history
     })
 
 if __name__ == '__main__':

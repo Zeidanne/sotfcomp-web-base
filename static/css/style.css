@@ -364,6 +364,86 @@ input[readonly] {
     font-weight: 600;
 }
 
+/* Tugas 4 - TSP Styles */
+.loading-message {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 1rem;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 600;
+    border: 1px solid #ffeaa7;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 600;
+    border: 1px solid #f5c6cb;
+}
+
+.evolution-summary {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.evolution-summary p {
+    margin: 0.5rem 0;
+}
+
+.generations-container {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+.generation-box-tsp {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.generation-box-tsp:last-child {
+    margin-bottom: 0;
+}
+
+.generation-header {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.tsp-route {
+    background-color: white;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    word-wrap: break-word;
+}
+
+.tsp-final-route {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+    font-size: 1rem;
+    word-wrap: break-word;
+    color: white;
+}
+
 @media (max-width: 768px) {
     .item-fields {
         grid-template-columns: 1fr;

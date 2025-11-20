@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Soft Computing - Tugas 4</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style.css') }}"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>Soft Computing</h1>
+
+                <!-- Navigation Tabs -->
+                <nav class="tab-navigation">
+                    <a href="/" class="tab-link">Soft Computing</a>
+                    <a href="/tugas2" class="tab-link">Fuzzy Sugeno</a>
+                    <a href="/tugas3" class="tab-link">Knapsack Problem</a>
+                    <a href="/tugas4" class="tab-link active">TSP</a>
+                </nav>
+            </header>
+
+            <main>
+                <h2>Tugas 4 - Traveling Salesman Problem (TSP)</h2>
+
+                <div class="content-section">
+                    <!-- Penjelasan Section -->
+                    <div class="collapsible active">
+                        <div class="collapsible-header">
+                            🗺️ Penjelasan Traveling Salesman Problem
+                        </div>
+                        <div class="collapsible-content active">
+                            <p>
+                                <strong
+                                    >Traveling Salesman Problem (TSP)</strong
+                                >
+                                adalah masalah optimasi klasik dalam ilmu
+                                komputer dan matematika. Masalah ini bertujuan
+                                untuk menemukan rute terpendek yang mengunjungi
+                                setiap kota tepat satu kali dan kembali ke kota
+                                asal.
+                            </p>
+
+                            <h3>Algoritma Genetika untuk TSP:</h3>
+                            <ul>
+                                <li>
+                                    <strong>Representasi Kromosom:</strong>
+                                    Urutan kunjungan kota (permutasi)
+                                </li>
+                                <li>
+                                    <strong>Fitness:</strong> Total jarak yang
+                                    ditempuh (semakin kecil semakin baik)
+                                </li>
+                                <li>
+                                    <strong>Seleksi:</strong> Tournament
+                                    Selection dengan ukuran tournament yang
+                                    dapat disesuaikan
+                                </li>
+                                <li>
+                                    <strong>Crossover:</strong> Ordered
+                                    Crossover (OX) - mempertahankan urutan
+                                    relatif dari parent
+                                </li>
+                                <li>
+                                    <strong>Mutasi:</strong> Swap Mutation -
+                                    menukar posisi dua kota secara acak
+                                </li>
+                                <li>
+                                    <strong>Elitism:</strong> Individu terbaik
+                                    dipertahankan ke generasi berikutnya
+                                </li>
+                            </ul>
+
+                            <h3>Parameter Algoritma:</h3>
+                            <ul>
+                                <li>
+                                    <strong>Population Size:</strong> Jumlah
+                                    individu dalam setiap generasi (default: 50)
+                                </li>
+                                <li>
+                                    <strong>Generations:</strong> Jumlah iterasi
+                                    evolusi (default: 100)
+                                </li>
+                                <li>
+                                    <strong>Tournament Size:</strong> Jumlah
+                                    individu yang dipilih dalam tournament
+                                    selection (default: 5)
+                                </li>
+                                <li>
+                                    <strong>Crossover Rate:</strong>
+                                    Probabilitas terjadinya crossover (default:
+                                    0.8)
+                                </li>
+                                <li>
+                                    <strong>Mutation Rate:</strong> Probabilitas
+                                    terjadinya mutasi (default: 0.2)
+                                </li>
+                                <li>
+                                    <strong>Elite Size:</strong> Jumlah individu
+                                    terbaik yang dipertahankan (default: 1)
+                                </li>
+                            </ul>
+
+                            <p>
+                                <strong>Data:</strong> Sistem ini menggunakan
+                                data jarak antar kota dari file Excel yang
+                                berisi matriks jarak.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Form Parameter Section -->
+                    <div class="collapsible active">
+                        <div class="collapsible-header">
+                            ⚙️ Parameter Algoritma Genetika
+                        </div>
+                        <div class="collapsible-content active">
+                            <form id="tspForm">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="pop_size"
+                                            >Population Size:</label
+                                        >
+                                        <input
+                                            type="number"
+                                            id="pop_size"
+                                            name="pop_size"
+                                            value="50"
+                                            min="10"
+                                            max="500"
+                                            step="10"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="generations"
+                                            >Generations:</label
+                                        >
+                                        <input
+                                            type="number"
+                                            id="generations"
+                                            name="generations"
+                                            value="100"
+                                            min="10"
+                                            max="500"
+                                            step="10"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="tournament_k"
+                                            >Tournament Size:</label
+                                        >
+                                        <input
+                                            type="number"
+                                            id="tournament_k"
+                                            name="tournament_k"
+                                            value="5"
+                                            min="2"
+                                            max="20"
+                                            step="1"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="crossover_rate"
+                                            >Crossover Rate:</label
+                                        >
+                                        <input
+                                            type="number"
+                                            id="crossover_rate"
+                                            name="crossover_rate"
+                                            value="0.8"
+                                            min="0"
+                                            max="1"
+                                            step="0.1"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="mutation_rate"
+                                            >Mutation Rate:</label
+                                        >
+                                        <input
+                                            type="number"
+                                            id="mutation_rate"
+                                            name="mutation_rate"
+                                            value="0.2"
+                                            min="0"
+                                            max="1"
+                                            step="0.1"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="elite_size"
+                                            >Elite Size:</label
+                                        >
+                                        <input
+                                            type="number"
+                                            id="elite_size"
+                                            name="elite_size"
+                                            value="1"
+                                            min="1"
+                                            max="10"
+                                            step="1"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn-proses">
+                                    🚀 Jalankan Algoritma Genetika
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Hasil Section -->
+                    <div
+                        class="collapsible"
+                        id="hasilSection"
+                        style="display: none"
+                    >
+                        <div class="collapsible-header">📊 Hasil TSP</div>
+                        <div class="collapsible-content">
+                            <div id="hasilContainer"></div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/tsp.js') }}"></script>
+    </body>
+</html>
