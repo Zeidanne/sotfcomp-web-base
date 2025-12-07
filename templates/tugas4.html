@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Soft Computing - Tugas 4</title>
+        <title>Soft Computing - TSP</title>
+        <meta name="description" content="Algoritma Genetika untuk Traveling Salesman Problem - menemukan rute terpendek mengunjungi semua kota" />
         <link
             rel="stylesheet"
             href="{{ url_for('static', filename='css/style.css') }}"
@@ -16,27 +17,25 @@
 
                 <!-- Navigation Tabs -->
                 <nav class="tab-navigation">
-                    <a href="/" class="tab-link">Soft Computing</a>
+                    <a href="/" class="tab-link">Konsep Dasar</a>
                     <a href="/tugas2" class="tab-link">Fuzzy Sugeno</a>
-                    <a href="/tugas3" class="tab-link">Knapsack Problem</a>
+                    <a href="/tugas3" class="tab-link">Knapsack</a>
                     <a href="/tugas4" class="tab-link active">TSP</a>
                 </nav>
             </header>
 
             <main>
-                <h2>Tugas 4 - Traveling Salesman Problem (TSP)</h2>
+                <h2>🗺️ Traveling Salesman Problem</h2>
 
                 <div class="content-section">
                     <!-- Penjelasan Section -->
                     <div class="collapsible active">
                         <div class="collapsible-header">
-                            🗺️ Penjelasan Traveling Salesman Problem
+                            📋 Penjelasan TSP
                         </div>
                         <div class="collapsible-content active">
                             <p>
-                                <strong
-                                    >Traveling Salesman Problem (TSP)</strong
-                                >
+                                <strong>Traveling Salesman Problem (TSP)</strong>
                                 adalah masalah optimasi klasik dalam ilmu
                                 komputer dan matematika. Masalah ini bertujuan
                                 untuk menemukan rute terpendek yang mengunjungi
@@ -44,68 +43,18 @@
                                 asal.
                             </p>
 
-                            <h3>Algoritma Genetika untuk TSP:</h3>
+                            <h3>🧬 Algoritma Genetika untuk TSP</h3>
                             <ul>
-                                <li>
-                                    <strong>Representasi Kromosom:</strong>
-                                    Urutan kunjungan kota (permutasi)
-                                </li>
-                                <li>
-                                    <strong>Fitness:</strong> Total jarak yang
-                                    ditempuh (semakin kecil semakin baik)
-                                </li>
-                                <li>
-                                    <strong>Seleksi:</strong> Tournament
-                                    Selection dengan ukuran tournament yang
-                                    dapat disesuaikan
-                                </li>
-                                <li>
-                                    <strong>Crossover:</strong> Ordered
-                                    Crossover (OX) - mempertahankan urutan
-                                    relatif dari parent
-                                </li>
-                                <li>
-                                    <strong>Mutasi:</strong> Swap Mutation -
-                                    menukar posisi dua kota secara acak
-                                </li>
-                                <li>
-                                    <strong>Elitism:</strong> Individu terbaik
-                                    dipertahankan ke generasi berikutnya
-                                </li>
-                            </ul>
-
-                            <h3>Parameter Algoritma:</h3>
-                            <ul>
-                                <li>
-                                    <strong>Population Size:</strong> Jumlah
-                                    individu dalam setiap generasi (default: 50)
-                                </li>
-                                <li>
-                                    <strong>Generations:</strong> Jumlah iterasi
-                                    evolusi (default: 100)
-                                </li>
-                                <li>
-                                    <strong>Tournament Size:</strong> Jumlah
-                                    individu yang dipilih dalam tournament
-                                    selection (default: 5)
-                                </li>
-                                <li>
-                                    <strong>Crossover Rate:</strong>
-                                    Probabilitas terjadinya crossover (default:
-                                    0.8)
-                                </li>
-                                <li>
-                                    <strong>Mutation Rate:</strong> Probabilitas
-                                    terjadinya mutasi (default: 0.2)
-                                </li>
-                                <li>
-                                    <strong>Elite Size:</strong> Jumlah individu
-                                    terbaik yang dipertahankan (default: 1)
-                                </li>
+                                <li><strong>Representasi Kromosom:</strong> Urutan kunjungan kota (permutasi)</li>
+                                <li><strong>Fitness:</strong> Total jarak yang ditempuh (semakin kecil semakin baik)</li>
+                                <li><strong>Seleksi:</strong> Tournament Selection dengan ukuran yang dapat disesuaikan</li>
+                                <li><strong>Crossover:</strong> Ordered Crossover (OX) - mempertahankan urutan relatif</li>
+                                <li><strong>Mutasi:</strong> Swap Mutation - menukar posisi dua kota secara acak</li>
+                                <li><strong>Elitism:</strong> Individu terbaik dipertahankan ke generasi berikutnya</li>
                             </ul>
 
                             <p>
-                                <strong>Data:</strong> Sistem ini menggunakan
+                                <strong>📁 Data:</strong> Sistem ini menggunakan
                                 data jarak antar kota dari file Excel yang
                                 berisi matriks jarak.
                             </p>
@@ -121,9 +70,7 @@
                             <form id="tspForm">
                                 <div class="form-row">
                                     <div class="form-group">
-                                        <label for="pop_size"
-                                            >Population Size:</label
-                                        >
+                                        <label for="pop_size">Population Size</label>
                                         <input
                                             type="number"
                                             id="pop_size"
@@ -137,9 +84,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="generations"
-                                            >Generations:</label
-                                        >
+                                        <label for="generations">Generations</label>
                                         <input
                                             type="number"
                                             id="generations"
@@ -153,9 +98,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="tournament_k"
-                                            >Tournament Size:</label
-                                        >
+                                        <label for="tournament_k">Tournament Size</label>
                                         <input
                                             type="number"
                                             id="tournament_k"
@@ -171,9 +114,7 @@
 
                                 <div class="form-row">
                                     <div class="form-group">
-                                        <label for="crossover_rate"
-                                            >Crossover Rate:</label
-                                        >
+                                        <label for="crossover_rate">Crossover Rate</label>
                                         <input
                                             type="number"
                                             id="crossover_rate"
@@ -187,9 +128,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="mutation_rate"
-                                            >Mutation Rate:</label
-                                        >
+                                        <label for="mutation_rate">Mutation Rate</label>
                                         <input
                                             type="number"
                                             id="mutation_rate"
@@ -203,9 +142,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="elite_size"
-                                            >Elite Size:</label
-                                        >
+                                        <label for="elite_size">Elite Size</label>
                                         <input
                                             type="number"
                                             id="elite_size"
@@ -233,7 +170,7 @@
                         style="display: none"
                     >
                         <div class="collapsible-header">📊 Hasil TSP</div>
-                        <div class="collapsible-content">
+                        <div class="collapsible-content active">
                             <div id="hasilContainer"></div>
                         </div>
                     </div>

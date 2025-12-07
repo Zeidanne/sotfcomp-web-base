@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Soft Computing - Tugas 1</title>
+        <title>Soft Computing - Konsep Dasar</title>
+        <meta name="description" content="Pelajari konsep dasar Soft Computing: Logika Fuzzy, Neural Network, dan Algoritma Genetika" />
         <link
             rel="stylesheet"
             href="{{ url_for('static', filename='css/style.css') }}"
@@ -16,50 +17,46 @@
 
                 <!-- Navigation Tabs -->
                 <nav class="tab-navigation">
-                    <a href="/" class="tab-link active">Soft Computing</a>
+                    <a href="/" class="tab-link active">Konsep Dasar</a>
                     <a href="/tugas2" class="tab-link">Fuzzy Sugeno</a>
-                    <a href="/tugas3" class="tab-link">Knapsack Problem</a>
+                    <a href="/tugas3" class="tab-link">Knapsack</a>
                     <a href="/tugas4" class="tab-link">TSP</a>
                 </nav>
             </header>
 
             <main>
-                <h2>Tugas 1 - Konsep Dasar</h2>
+                <h2>✨ Pengenalan Soft Computing</h2>
                 <div class="content-section">
                     <!-- Soft Computing Section -->
-                    <div class="collapsible">
+                    <div class="collapsible active">
                         <div class="collapsible-header">
                             💡 Pengertian Soft Computing
                         </div>
-                        <div class="collapsible-content">
+                        <div class="collapsible-content active">
                             <p>
-                                Soft Computing adalah sekumpulan metodologi
+                                <strong>Soft Computing</strong> adalah sekumpulan metodologi
                                 komputasi yang berfokus pada toleransi terhadap
                                 ketidaktepatan, ketidakpastian, dan kebenaran
                                 parsial untuk mencapai ketangguhan (robustness),
                                 kemudahan (tractability), dan biaya solusi yang
-                                rendah. <br />
-                                <br />
-                                Berbeda dengan Hard Computing tradisional yang
+                                rendah.
+                            </p>
+                            <p>
+                                Berbeda dengan <em>Hard Computing</em> tradisional yang
                                 menuntut model matematis yang tepat dan solusi
                                 yang benar-benar akurat, Soft Computing
                                 dirancang untuk meniru cara kerja pikiran
                                 manusia dalam menghadapi masalah dunia nyata
                                 yang kompleks, di mana seringkali solusi yang
                                 memadai atau mendekati optimal sudah cukup.
-                            </p>
+                            </p> 
 
-                            <p>
-                                Komponen utama Soft Computing biasanya meliputi:
-                            </p>
+                            <h3>🔧 Komponen Utama Soft Computing</h3>
                             <ul>
-                                <li>Logika Fuzzy (Fuzzy Logic)</li>
-                                <li>Jaringan Saraf Tiruan (Neural Networks)</li>
-                                <li>Algoritma Genetika (Genetic Algorithms)</li>
-                                <li>
-                                    Komputasi Probabilistik (Probabilistic
-                                    Reasoning)
-                                </li>
+                                <li><strong>Logika Fuzzy</strong> - Menangani ketidakpastian dan kebenaran parsial</li>
+                                <li><strong>Jaringan Saraf Tiruan</strong> - Pembelajaran dari data dan pengenalan pola</li>
+                                <li><strong>Algoritma Genetika</strong> - Optimasi berbasis evolusi biologis</li>
+                                <li><strong>Komputasi Probabilistik</strong> - Penalaran dalam ketidakpastian</li>
                             </ul>
                         </div>
                     </div>
@@ -67,11 +64,11 @@
                     <!-- Fuzzy Logic Section -->
                     <div class="collapsible">
                         <div class="collapsible-header">
-                            ☁️ Penjelasan Logika Fuzzy
+                            ☁️ Logika Fuzzy
                         </div>
                         <div class="collapsible-content">
                             <p>
-                                Logika Fuzzy adalah bentuk logika yang
+                                <strong>Logika Fuzzy</strong> adalah bentuk logika yang
                                 didasarkan pada penalaran yang mendekati cara
                                 berpikir manusia. Logika ini memungkinkan nilai
                                 kebenaran variabel berada di antara 0 (salah
@@ -79,32 +76,19 @@
                                 atau 1 seperti pada logika Boolean standar.
                             </p>
 
-                            <p>Konsep dasar Logika Fuzzy:</p>
+                            <h3>📚 Konsep Dasar Logika Fuzzy</h3>
                             <ul>
-                                <li>
-                                    Himpunan Fuzzy: Memungkinkan keanggotaan
-                                    parsial dalam suatu himpunan
-                                </li>
-                                <li>
-                                    Fungsi Keanggotaan: Menentukan derajat
-                                    keanggotaan suatu elemen dalam himpunan
-                                    fuzzy
-                                </li>
-                                <li>
-                                    Variabel Linguistik: Menggunakan kata-kata
-                                    untuk menggambarkan nilai
-                                </li>
-                                <li>
-                                    Aturan Fuzzy: Menggunakan pernyataan IF-THEN
-                                    untuk formulasi kondisi
-                                </li>
+                                <li><strong>Himpunan Fuzzy:</strong> Memungkinkan keanggotaan parsial dalam suatu himpunan</li>
+                                <li><strong>Fungsi Keanggotaan:</strong> Menentukan derajat keanggotaan suatu elemen dalam himpunan fuzzy</li>
+                                <li><strong>Variabel Linguistik:</strong> Menggunakan kata-kata untuk menggambarkan nilai</li>
+                                <li><strong>Aturan Fuzzy:</strong> Menggunakan pernyataan IF-THEN untuk formulasi kondisi</li>
                             </ul>
 
-                            <p>Aplikasi Logika Fuzzy:</p>
+                            <h3>🎯 Aplikasi Logika Fuzzy</h3>
                             <ul>
-                                <li>Sistem kontrol otomatis</li>
-                                <li>Pengambilan keputusan</li>
-                                <li>Pengenalan pola</li>
+                                <li>Sistem kontrol otomatis (AC, mesin cuci)</li>
+                                <li>Pengambilan keputusan bisnis</li>
+                                <li>Pengenalan pola dan klasifikasi</li>
                                 <li>Sistem pendukung keputusan</li>
                             </ul>
                         </div>
@@ -113,48 +97,66 @@
                     <!-- Neural Network Section -->
                     <div class="collapsible">
                         <div class="collapsible-header">
-                            🧠 Penjelasan Neural Network (NN)
+                            🧠 Neural Network
                         </div>
                         <div class="collapsible-content">
                             <p>
-                                Neural Network (Jaringan Saraf Tiruan/JST)
+                                <strong>Neural Network</strong> (Jaringan Saraf Tiruan/JST)
                                 adalah model komputasi yang terinspirasi oleh
                                 struktur dan fungsi otak biologis. Jaringan ini
                                 terdiri dari sejumlah besar unit pemrosesan yang
                                 saling terhubung yang disebut neuron (node).
                             </p>
 
-                            <p>Komponen utama Neural Network:</p>
+                            <h3>🔬 Komponen Utama Neural Network</h3>
                             <ul>
-                                <li>Neuron (Node): Unit pemrosesan dasar</li>
-                                <li>Bobot: Kekuatan koneksi antar neuron</li>
-                                <li>
-                                    Fungsi Aktivasi: Menentukan output neuron
-                                </li>
-                                <li>
-                                    Layer: Lapisan neuron (input, hidden,
-                                    output)
-                                </li>
+                                <li><strong>Neuron (Node):</strong> Unit pemrosesan dasar</li>
+                                <li><strong>Bobot:</strong> Kekuatan koneksi antar neuron</li>
+                                <li><strong>Fungsi Aktivasi:</strong> Menentukan output neuron</li>
+                                <li><strong>Layer:</strong> Lapisan neuron (input, hidden, output)</li>
                             </ul>
 
-                            <p>Proses Pembelajaran Neural Network:</p>
+                            <h3>📈 Proses Pembelajaran</h3>
+                            <p>
+                                Neural Network belajar melalui proses yang disebut
+                                <strong>pelatihan (training)</strong>, di mana ia
+                                menyesuaikan bobot koneksi untuk meminimalkan perbedaan 
+                                antara output yang diprediksi dan output yang sebenarnya.
+                                Teknik pelatihan yang umum adalah <em>Backpropagation</em>.
+                            </p>
+                            <p>
+                                Neural Network sangat efektif untuk tugas-tugas yang
+                                melibatkan pengenalan pola yang kompleks, seperti klasifikasi 
+                                gambar, pengenalan ucapan, dan prediksi.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Genetic Algorithm Section -->
+                    <div class="collapsible">
+                        <div class="collapsible-header">
+                            🧬 Algoritma Genetika
+                        </div>
+                        <div class="collapsible-content">
+                            <p>
+                                <strong>Algoritma Genetika</strong> adalah metode optimasi yang 
+                                terinspirasi dari proses evolusi biologis dan seleksi alam.
+                                Algoritma ini digunakan untuk menemukan solusi optimal atau 
+                                mendekati optimal untuk masalah-masalah kompleks.
+                            </p>
+
+                            <h3>🔄 Operator Genetika</h3>
                             <ul>
-                                <li>
-                                    NN belajar melalui proses yang disebut
-                                    pelatihan (training), di mana ia
-                                    menyesuaikan bobot koneksi untuk
-                                    meminimalkan perbedaan antara output yang
-                                    diprediksi dan output yang sebenarnya
-                                    (dikenal sebagai kesalahan/error). Teknik
-                                    pelatihan yang umum adalah Propagasi Balik
-                                    (Backpropagation).
-                                </li>
-                                <li>
-                                    NN sangat efektif untuk tugas-tugas yang
-                                    melibatkan pengenalan pola yang kompleks,
-                                    seperti klasifikasi gambar, pengenalan
-                                    ucapan, dan prediksi.
-                                </li>
+                                <li><strong>Seleksi:</strong> Memilih individu terbaik untuk reproduksi</li>
+                                <li><strong>Crossover:</strong> Menggabungkan gen dari dua parent untuk membuat offspring</li>
+                                <li><strong>Mutasi:</strong> Perubahan acak pada gen untuk menjaga keragaman</li>
+                                <li><strong>Elitism:</strong> Mempertahankan individu terbaik ke generasi berikutnya</li>
+                            </ul>
+
+                            <h3>🎯 Aplikasi dalam Project Ini</h3>
+                            <ul>
+                                <li><strong>Knapsack Problem:</strong> Optimasi pemilihan barang dengan kapasitas terbatas</li>
+                                <li><strong>TSP:</strong> Menemukan rute terpendek mengunjungi semua kota</li>
                             </ul>
                         </div>
                     </div>

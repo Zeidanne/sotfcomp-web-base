@@ -28,6 +28,9 @@ def hitung_fuzzy():
     permintaan = float(data['permintaan'])
     persediaan = float(data['persediaan'])
     
+    # Get selected rules from frontend (defaults to all if not provided)
+    selected_rules = data.get('selected_rules', [1, 2, 3, 4])
+    
     # Fungsi keanggotaan Permintaan
     def permintaan_turun(x):
         if x <= 1000:
@@ -68,46 +71,53 @@ def hitung_fuzzy():
     pers_sedikit = persediaan_sedikit(persediaan)
     pers_banyak = persediaan_banyak(persediaan)
     
-    # Rule Sugeno
+    # Rule Sugeno (only process selected rules)
     rules = []
     alpha_predikat = []
     z_values = []
     
     # Rule 1: Permintaan TURUN AND Persediaan BANYAK => Produksi = Permintaan - Persediaan
-    alpha1 = min(perm_turun, pers_banyak)
-    z1 = permintaan - persediaan
-    if alpha1 > 0:
-        rules.append(f"Rule 1: Permintaan TURUN ({perm_turun:.3f}) AND Persediaan BANYAK ({pers_banyak:.3f}) = {alpha1:.3f}")
-        alpha_predikat.append(alpha1)
-        z_values.append(z1)
+    if 1 in selected_rules:
+        alpha1 = min(perm_turun, pers_banyak)
+        z1 = permintaan - persediaan
+        if alpha1 > 0:
+            rules.append(f"Rule 1: Permintaan TURUN ({perm_turun:.3f}) AND Persediaan BANYAK ({pers_banyak:.3f}) = α={alpha1:.3f}")
+            alpha_predikat.append(alpha1)
+            z_values.append(z1)
     
     # Rule 2: Permintaan TURUN AND Persediaan SEDIKIT => Produksi = Permintaan
-    alpha2 = min(perm_turun, pers_sedikit)
-    z2 = permintaan
-    if alpha2 > 0:
-        rules.append(f"Rule 2: Permintaan TURUN ({perm_turun:.3f}) AND Persediaan SEDIKIT ({pers_sedikit:.3f}) = {alpha2:.3f}")
-        alpha_predikat.append(alpha2)
-        z_values.append(z2)
+    if 2 in selected_rules:
+        alpha2 = min(perm_turun, pers_sedikit)
+        z2 = permintaan
+        if alpha2 > 0:
+            rules.append(f"Rule 2: Permintaan TURUN ({perm_turun:.3f}) AND Persediaan SEDIKIT ({pers_sedikit:.3f}) = α={alpha2:.3f}")
+            alpha_predikat.append(alpha2)
+            z_values.append(z2)
     
     # Rule 3: Permintaan NAIK AND Persediaan BANYAK => Produksi = Permintaan
-    alpha3 = min(perm_naik, pers_banyak)
-    z3 = permintaan
-    if alpha3 > 0:
-        rules.append(f"Rule 3: Permintaan NAIK ({perm_naik:.3f}) AND Persediaan BANYAK ({pers_banyak:.3f}) = {alpha3:.3f}")
-        alpha_predikat.append(alpha3)
-        z_values.append(z3)
+    if 3 in selected_rules:
+        alpha3 = min(perm_naik, pers_banyak)
+        z3 = permintaan
+        if alpha3 > 0:
+            rules.append(f"Rule 3: Permintaan NAIK ({perm_naik:.3f}) AND Persediaan BANYAK ({pers_banyak:.3f}) = α={alpha3:.3f}")
+            alpha_predikat.append(alpha3)
+            z_values.append(z3)
     
     # Rule 4: Permintaan NAIK AND Persediaan SEDIKIT => Produksi = 1.25 * Permintaan - Persediaan
-    alpha4 = min(perm_naik, pers_sedikit)
-    z4 = 1.25 * permintaan - persediaan
-    if alpha4 > 0:
-        rules.append(f"Rule 4: Permintaan NAIK ({perm_naik:.3f}) AND Persediaan SEDIKIT ({pers_sedikit:.3f}) = {alpha4:.3f}")
-        alpha_predikat.append(alpha4)
-        z_values.append(z4)
+    if 4 in selected_rules:
+        alpha4 = min(perm_naik, pers_sedikit)
+        z4 = 1.25 * permintaan - persediaan
+        if alpha4 > 0:
+            rules.append(f"Rule 4: Permintaan NAIK ({perm_naik:.3f}) AND Persediaan SEDIKIT ({pers_sedikit:.3f}) = α={alpha4:.3f}")
+            alpha_predikat.append(alpha4)
+            z_values.append(z4)
     
     # Defuzzifikasi (Weighted Average)
-    if sum(alpha_predikat) > 0:
-        hasil_produksi = sum(a * z for a, z in zip(alpha_predikat, z_values)) / sum(alpha_predikat)
+    sum_alpha = sum(alpha_predikat)
+    sum_alpha_z = sum(a * z for a, z in zip(alpha_predikat, z_values))
+    
+    if sum_alpha > 0:
+        hasil_produksi = sum_alpha_z / sum_alpha
     else:
         hasil_produksi = 0
     
@@ -115,6 +125,7 @@ def hitung_fuzzy():
         'success': True,
         'permintaan': permintaan,
         'persediaan': persediaan,
+        'selected_rules': selected_rules,
         'derajat_keanggotaan': {
             'permintaan_turun': perm_turun,
             'permintaan_naik': perm_naik,
@@ -124,6 +135,8 @@ def hitung_fuzzy():
         'rules': rules,
         'alpha_predikat': alpha_predikat,
         'z_values': z_values,
+        'sum_alpha_z': sum_alpha_z,
+        'sum_alpha': sum_alpha,
         'hasil_produksi': round(hasil_produksi, 2)
     })
 

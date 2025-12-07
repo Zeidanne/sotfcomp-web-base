@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Soft Computing - Tugas 3</title>
+        <title>Soft Computing - Knapsack Problem</title>
+        <meta name="description" content="Algoritma Genetika untuk memecahkan Knapsack Problem - optimasi pemilihan item dengan kapasitas terbatas" />
         <link
             rel="stylesheet"
             href="{{ url_for('static', filename='css/style.css') }}"
@@ -16,17 +17,15 @@
 
                 <!-- Navigation Tabs -->
                 <nav class="tab-navigation">
-                    <a href="/" class="tab-link">Soft Computing</a>
+                    <a href="/" class="tab-link">Konsep Dasar</a>
                     <a href="/tugas2" class="tab-link">Fuzzy Sugeno</a>
-                    <a href="/tugas3" class="tab-link active"
-                        >Knapsack Problem</a
-                    >
+                    <a href="/tugas3" class="tab-link active">Knapsack</a>
                     <a href="/tugas4" class="tab-link">TSP</a>
                 </nav>
             </header>
 
             <main>
-                <h2>Tugas 3 - Algoritma Genetika (Knapsack Problem)</h2>
+                <h2>🎒 Knapsack Problem - Algoritma Genetika</h2>
 
                 <div class="content-section">
                     <!-- Penjelasan Section -->
@@ -44,54 +43,14 @@
                                 kapasitas berat tas.
                             </p>
 
-                            <h3>Algoritma Genetika untuk Knapsack:</h3>
+                            <h3>🧬 Algoritma Genetika untuk Knapsack</h3>
                             <ul>
-                                <li>
-                                    <strong>Kromosom:</strong> Representasi
-                                    biner [0,1,0,1] di mana 1 = item dipilih, 0
-                                    = tidak dipilih
-                                </li>
-                                <li>
-                                    <strong>Fitness:</strong> Total nilai item
-                                    (dengan penalti jika melebihi kapasitas)
-                                </li>
-                                <li>
-                                    <strong>Seleksi:</strong> Roulette Wheel
-                                    Selection
-                                </li>
-                                <li>
-                                    <strong>Crossover:</strong> Single-point
-                                    crossover
-                                </li>
-                                <li>
-                                    <strong>Mutasi:</strong> Bit flip dengan
-                                    probabilitas tertentu
-                                </li>
-                                <li>
-                                    <strong>Elitism:</strong> Individu terbaik
-                                    dipertahankan ke generasi berikutnya
-                                </li>
-                            </ul>
-
-                            <h3>Parameter Algoritma:</h3>
-                            <ul>
-                                <li>
-                                    <strong>Population Size:</strong> Jumlah
-                                    individu dalam setiap generasi (default: 8)
-                                </li>
-                                <li>
-                                    <strong>Generations:</strong> Jumlah iterasi
-                                    evolusi (default: 8)
-                                </li>
-                                <li>
-                                    <strong>Crossover Rate:</strong>
-                                    Probabilitas terjadinya crossover (default:
-                                    0.8)
-                                </li>
-                                <li>
-                                    <strong>Mutation Rate:</strong> Probabilitas
-                                    terjadinya mutasi (default: 0.1)
-                                </li>
+                                <li><strong>Kromosom:</strong> Representasi biner [0,1,0,1] di mana 1 = item dipilih, 0 = tidak dipilih</li>
+                                <li><strong>Fitness:</strong> Total nilai item (dengan penalti jika melebihi kapasitas)</li>
+                                <li><strong>Seleksi:</strong> Roulette Wheel Selection</li>
+                                <li><strong>Crossover:</strong> Single-point crossover</li>
+                                <li><strong>Mutasi:</strong> Bit flip dengan probabilitas tertentu</li>
+                                <li><strong>Elitism:</strong> Individu terbaik dipertahankan ke generasi berikutnya</li>
                             </ul>
                         </div>
                     </div>
@@ -101,9 +60,7 @@
                         <div class="collapsible-header">📦 Input Data Item</div>
                         <div class="collapsible-content active">
                             <div class="form-group">
-                                <label for="capacity"
-                                    >Kapasitas Tas (kg):</label
-                                >
+                                <label for="capacity">Kapasitas Tas (kg)</label>
                                 <input
                                     type="number"
                                     id="capacity"
@@ -121,7 +78,7 @@
                                     <h4>Item A</h4>
                                     <div class="item-fields">
                                         <div class="form-group">
-                                            <label>Nama Item:</label>
+                                            <label>Nama Item</label>
                                             <input
                                                 type="text"
                                                 class="item-name"
@@ -130,7 +87,7 @@
                                             />
                                         </div>
                                         <div class="form-group">
-                                            <label>Berat (kg):</label>
+                                            <label>Berat (kg)</label>
                                             <input
                                                 type="number"
                                                 class="item-weight"
@@ -141,7 +98,7 @@
                                             />
                                         </div>
                                         <div class="form-group">
-                                            <label>Nilai ($):</label>
+                                            <label>Nilai ($)</label>
                                             <input
                                                 type="number"
                                                 class="item-value"
@@ -158,7 +115,7 @@
                                     <h4>Item B</h4>
                                     <div class="item-fields">
                                         <div class="form-group">
-                                            <label>Nama Item:</label>
+                                            <label>Nama Item</label>
                                             <input
                                                 type="text"
                                                 class="item-name"
@@ -167,7 +124,7 @@
                                             />
                                         </div>
                                         <div class="form-group">
-                                            <label>Berat (kg):</label>
+                                            <label>Berat (kg)</label>
                                             <input
                                                 type="number"
                                                 class="item-weight"
@@ -178,7 +135,7 @@
                                             />
                                         </div>
                                         <div class="form-group">
-                                            <label>Nilai ($):</label>
+                                            <label>Nilai ($)</label>
                                             <input
                                                 type="number"
                                                 class="item-value"
@@ -195,7 +152,7 @@
                                     <h4>Item C</h4>
                                     <div class="item-fields">
                                         <div class="form-group">
-                                            <label>Nama Item:</label>
+                                            <label>Nama Item</label>
                                             <input
                                                 type="text"
                                                 class="item-name"
@@ -204,7 +161,7 @@
                                             />
                                         </div>
                                         <div class="form-group">
-                                            <label>Berat (kg):</label>
+                                            <label>Berat (kg)</label>
                                             <input
                                                 type="number"
                                                 class="item-weight"
@@ -215,7 +172,7 @@
                                             />
                                         </div>
                                         <div class="form-group">
-                                            <label>Nilai ($):</label>
+                                            <label>Nilai ($)</label>
                                             <input
                                                 type="number"
                                                 class="item-value"
@@ -232,7 +189,7 @@
                                     <h4>Item D</h4>
                                     <div class="item-fields">
                                         <div class="form-group">
-                                            <label>Nama Item:</label>
+                                            <label>Nama Item</label>
                                             <input
                                                 type="text"
                                                 class="item-name"
@@ -241,7 +198,7 @@
                                             />
                                         </div>
                                         <div class="form-group">
-                                            <label>Berat (kg):</label>
+                                            <label>Berat (kg)</label>
                                             <input
                                                 type="number"
                                                 class="item-weight"
@@ -252,7 +209,7 @@
                                             />
                                         </div>
                                         <div class="form-group">
-                                            <label>Nilai ($):</label>
+                                            <label>Nilai ($)</label>
                                             <input
                                                 type="number"
                                                 class="item-value"
@@ -272,14 +229,14 @@
                                     id="addItem"
                                     class="btn-secondary"
                                 >
-                                    + Tambah Item
+                                    ➕ Tambah Item
                                 </button>
                                 <button
                                     type="button"
                                     id="removeItem"
                                     class="btn-danger"
                                 >
-                                    - Hapus Item Terakhir
+                                    ➖ Hapus Item Terakhir
                                 </button>
                             </div>
                         </div>
@@ -294,9 +251,7 @@
                             <form id="geneticForm">
                                 <div class="form-row">
                                     <div class="form-group">
-                                        <label for="pop_size"
-                                            >Population Size:</label
-                                        >
+                                        <label for="pop_size">Population Size</label>
                                         <input
                                             type="number"
                                             id="pop_size"
@@ -310,9 +265,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="generations"
-                                            >Generations:</label
-                                        >
+                                        <label for="generations">Generations</label>
                                         <input
                                             type="number"
                                             id="generations"
@@ -328,9 +281,7 @@
 
                                 <div class="form-row">
                                     <div class="form-group">
-                                        <label for="crossover_rate"
-                                            >Crossover Rate (0-1):</label
-                                        >
+                                        <label for="crossover_rate">Crossover Rate (0-1)</label>
                                         <input
                                             type="number"
                                             id="crossover_rate"
@@ -344,9 +295,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="mutation_rate"
-                                            >Mutation Rate (0-1):</label
-                                        >
+                                        <label for="mutation_rate">Mutation Rate (0-1)</label>
                                         <input
                                             type="number"
                                             id="mutation_rate"
@@ -361,7 +310,7 @@
                                 </div>
 
                                 <button type="submit" class="btn-proses">
-                                    Jalankan Algoritma Genetika
+                                    🧬 Jalankan Algoritma Genetika
                                 </button>
                             </form>
                         </div>
