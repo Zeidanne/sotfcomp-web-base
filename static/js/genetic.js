@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const originalBtnText = submitBtn.innerHTML;
             
             // Show loading state
-            submitBtn.innerHTML = '⏳ Memproses...';
+            submitBtn.innerHTML = 'Memproses...';
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.7';
 
@@ -210,7 +210,7 @@ function displayHasilGenetic(data, capacity) {
 
     let html = `
         <div class="hasil-box" style="animation-delay: 0.1s">
-            <h3>📊 Ringkasan Evolusi</h3>
+            <h3>Ringkasan Evolusi</h3>
             <div class="hasil-item">
                 <span class="hasil-label">Kapasitas Tas</span>
                 <span class="hasil-value">${capacity} kg</span>
@@ -222,7 +222,7 @@ function displayHasilGenetic(data, capacity) {
         </div>
         
         <div class="hasil-box" style="animation-delay: 0.2s">
-            <h3>🧬 Proses Evolusi</h3>
+            <h3>Proses Evolusi</h3>
             <div class="generations-container">
     `;
 
@@ -263,19 +263,19 @@ function displayHasilGenetic(data, capacity) {
                 Kromosom Terbaik: [${data.final_result.chromosome.join(", ")}]
             </div>
             <div class="result-item">
-                <strong>📦 Item yang Dipilih:</strong>
+                <strong>Item yang Dipilih:</strong>
                 <span>${data.final_result.items.join(", ") || "Tidak ada"}</span>
             </div>
             <div class="result-item">
-                <strong>⚖️ Total Berat:</strong>
+                <strong>Total Berat:</strong>
                 <span>${data.final_result.weight} kg</span>
             </div>
             <div class="result-item">
-                <strong>💰 Total Nilai:</strong>
+                <strong>Total Nilai:</strong>
                 <span>$${data.final_result.value}</span>
             </div>
             <div class="result-item">
-                <strong>📈 Fitness Akhir:</strong>
+                <strong>Fitness Akhir:</strong>
                 <span>${data.final_result.fitness}</span>
             </div>
         </div>

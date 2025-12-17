@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const originalBtnText = submitBtn.innerHTML;
             
             // Show loading state
-            submitBtn.innerHTML = '⏳ Menghitung...';
+            submitBtn.innerHTML = 'Menghitung...';
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.7';
 
@@ -111,7 +111,7 @@ function displayHasil(data) {
 
     let html = `
         <div class="hasil-box" style="animation-delay: 0.1s">
-            <h3>📥 Input Data</h3>
+            <h3>Input Data</h3>
             <div class="hasil-item">
                 <span class="hasil-label">Permintaan</span>
                 <span class="hasil-value">${Number(data.permintaan).toLocaleString()}</span>
@@ -123,7 +123,7 @@ function displayHasil(data) {
         </div>
 
         <div class="hasil-box" style="animation-delay: 0.2s">
-            <h3>📊 Derajat Keanggotaan</h3>
+            <h3>Derajat Keanggotaan</h3>
             <div class="hasil-item">
                 <span class="hasil-label">Permintaan TURUN (μ)</span>
                 <span class="hasil-value">${data.derajat_keanggotaan.permintaan_turun.toFixed(4)}</span>
@@ -143,7 +143,7 @@ function displayHasil(data) {
         </div>
 
         <div class="hasil-box" style="animation-delay: 0.3s">
-            <h3>📋 Rules yang Aktif</h3>
+            <h3>Rules yang Aktif</h3>
             <div class="rule-list">
     `;
 
@@ -171,7 +171,7 @@ function displayHasil(data) {
         </div>
 
         <div class="hasil-box" style="animation-delay: 0.4s">
-            <h3>🔢 Defuzzifikasi (Weighted Average)</h3>
+            <h3>Defuzzifikasi (Weighted Average)</h3>
             <div class="hasil-item">
                 <span class="hasil-label">∑(α × Z)</span>
                 <span class="hasil-value">${data.sum_alpha_z ? data.sum_alpha_z.toFixed(2) : (data.alpha_predikat.reduce((sum, a, i) => sum + a * data.z_values[i], 0)).toFixed(2)}</span>
@@ -183,7 +183,7 @@ function displayHasil(data) {
         </div>
 
         <div class="hasil-produksi">
-            🏭 Jumlah Produksi yang Direkomendasikan: <strong>${Number(data.hasil_produksi).toLocaleString()}</strong> unit
+            Jumlah Produksi yang Direkomendasikan: <strong>${Number(data.hasil_produksi).toLocaleString()}</strong> unit
         </div>
     `;
 

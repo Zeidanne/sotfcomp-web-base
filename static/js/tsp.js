@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const submitBtn = tspForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '⏳ Memproses...';
+            submitBtn.innerHTML = 'Memproses...';
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.7';
 
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     hasilContainer.innerHTML = `
                         <div class="error-message">
-                            ❌ Error: ${data.error}
+                            Error: ${data.error}
                         </div>
                     `;
                 }
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error("Error:", error);
                 hasilContainer.innerHTML = `
                     <div class="error-message">
-                        ❌ Terjadi kesalahan dalam perhitungan
+                        Terjadi kesalahan dalam perhitungan
                     </div>
                 `;
             } finally {
@@ -97,7 +97,7 @@ function displayHasilTSP(data) {
 
     let html = `
         <div class="hasil-box" style="animation-delay: 0.1s">
-            <h3>📊 Ringkasan Evolusi</h3>
+            <h3>Ringkasan Evolusi</h3>
             <div class="hasil-item">
                 <span class="hasil-label">Jumlah Kota</span>
                 <span class="hasil-value">${data.cities.length} kota</span>
@@ -113,7 +113,7 @@ function displayHasilTSP(data) {
         </div>
         
         <div class="hasil-box" style="animation-delay: 0.2s">
-            <h3>🧬 Proses Evolusi (Sample)</h3>
+            <h3>Proses Evolusi (Sample)</h3>
             <div class="generations-container">
     `;
 
@@ -125,7 +125,7 @@ function displayHasilTSP(data) {
                     Generasi ${gen.generation}
                 </div>
                 <div class="tsp-route">
-                    <strong>🗺️ Rute:</strong> ${gen.best_route.join(" → ")} → ${gen.best_route[0]}
+                    <strong>Rute:</strong> ${gen.best_route.join(" → ")} → ${gen.best_route[0]}
                 </div>
                 <div class="hasil-item">
                     <span class="hasil-label">Jarak Total</span>
@@ -145,20 +145,20 @@ function displayHasilTSP(data) {
         <div class="final-result-box">
             <h3>Rute Optimal (Solusi Terbaik)</h3>
             <div class="tsp-final-route">
-                <strong>🗺️ Rute Lengkap:</strong><br>
+                <strong>Rute Lengkap:</strong><br>
                 ${data.final_result.full_route.join(" → ")}
             </div>
             <div class="result-item">
-                <strong>📏 Total Jarak:</strong>
+                <strong>Total Jarak:</strong>
                 <span>${data.final_result.distance} km</span>
             </div>
             <div class="result-item">
-                <strong>🏙️ Jumlah Kota:</strong>
+                <strong>Jumlah Kota:</strong>
                 <span>${data.final_result.route.length} kota</span>
             </div>
             ${improvement > 0 ? `
             <div class="result-item">
-                <strong>📈 Peningkatan:</strong>
+                <strong>Peningkatan:</strong>
                 <span>${improvement}% dari generasi awal</span>
             </div>
             ` : ''}

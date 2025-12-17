@@ -579,8 +579,7 @@ input::placeholder {
 }
 
 .item-input h4::before {
-    content: '📦';
-    font-size: 1.1rem;
+    content: '';
 }
 
 .item-fields {
@@ -609,7 +608,7 @@ input::placeholder {
 }
 
 .generation-header::before {
-    content: '🧬';
+    content: '';
 }
 
 .chromosome-display {
